@@ -24,8 +24,8 @@ columns = [
     "University",
     "Program",
     "Applied On",
-    "Interview",
     "Status",
+    "Interview",
     "Decision By",
 ]
 
