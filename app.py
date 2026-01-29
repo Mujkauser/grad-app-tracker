@@ -64,6 +64,22 @@ df["Decision Turnaround (Days)"] = df.apply(
     axis=1
 )
 
+ordered_columns = [
+    "University",
+    "Program",
+    "Applied On",
+    "Status",
+    "Interview",
+    "Decision By",
+    "Admit Received On",
+    "Decision Turnaround (Days)",
+    "Days Since Applied",
+    "Days Until Decision",
+    "Health"
+]
+
+df = df[ordered_columns]
+
 # ---------- UI ----------
 st.title("🎓 Graduate Application Tracker")
 st.caption("Anxiety-managed. Engineer-approved.")
