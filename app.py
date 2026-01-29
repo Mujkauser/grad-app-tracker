@@ -27,7 +27,6 @@ columns = [
     "Status",
     "Interview",
     "Decision By",
-    "Enrollment Deadline"
 ]
 
 df = pd.DataFrame(data, columns=columns)
@@ -44,14 +43,15 @@ df["Enrollment Deadline"] = df["Enrollment Deadline"].apply(parse)
 
 df["Days Since Applied"] = df["Applied On"].apply(lambda x: (today - x).days)
 df["Days Until Decision"] = df["Decision By"].apply(lambda x: (x - today).days if x else None)
-df["Days Until Enrollment"] = df["Enrollment Deadline"].apply(lambda x: (x - today).days if x else None)
 
 # ---------- STATUS LOGIC ----------
 def health(row):
-    if row["Status"] == "Admit" and row["Days Until Enrollment"] <= 15:
-        return "🔴 Action Required"
+    if row["Status"] == "Admit":
+        return "🏆 Admit Secured"
+
     if row["Days Until Decision"] is not None and row["Days Until Decision"] <= 0:
         return "🟡 Decision Window Open"
+
     return "🟢 Safe"
 
 df["Health"] = df.apply(health, axis=1)
@@ -69,8 +69,9 @@ with col2:
     st.metric("⏳ Awaiting Decisions", df[df["Status"] != "Admit"].shape[0])
 
 with col3:
-    urgent = df[df["Health"] == "🔴 Action Required"].shape[0]
-    st.metric("🚨 Action Needed", urgent)
+    attention = df[df["Health"] == "🟡 Decision Window Open"].shape[0]
+    st.metric("👀 Decisions In Progress", attention)
+
 
 st.divider()
 
