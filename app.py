@@ -73,7 +73,7 @@ with col3:
 
 st.divider()
 
-st.subheader("📊 Application Dashboard")
+st.subheader("Dashboard")
 st.dataframe(
     df.sort_values(by=["Health", "Days Until Decision"], na_position="last"),
     use_container_width=True
