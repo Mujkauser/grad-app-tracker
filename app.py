@@ -6,8 +6,8 @@ st.set_page_config(page_title="Grad App Tracker", layout="wide")
 
 # ---------- DATA ----------
 data = [
-    ["NYU Tandon", "MS Management of Technology", "2025-12-01", "Admit", "No Interview", None , "2025-12-20"],
-    ["Northeastern", "MS in Engineering Management", "2025-12-01", "Admit", "No Interview", None, "2025-12-19"],
+    ["NYU Tandon", "MS Management of Technology", "2025-12-01", "Admit", "No Interview", 2025-12-30, "2025-12-20"],
+    ["Northeastern", "MS in Engineering Management", "2025-12-01", "Admit", "No Interview", 2025-12-30, "2025-12-19"],
     ["Duke", "Master of Engineering Management", "2025-12-08", "Awaiting Decision", "No Interview", "2026-01-30", None],
     ["Dartmouth", "MEM", "2025-12-14", "Under Review", "Awaiting Interview invite", "2026-03-15", None],
     ["Georgia Tech (MS)", "MS Management", "2025-12-15", "Under Review", "No Interview", "2026-02-24", None],
