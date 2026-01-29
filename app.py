@@ -39,8 +39,6 @@ def parse(d):
 
 df["Applied On"] = df["Applied On"].apply(parse)
 df["Decision By"] = df["Decision By"].apply(parse)
-df["Enrollment Deadline"] = df["Enrollment Deadline"].apply(parse)
-
 df["Days Since Applied"] = df["Applied On"].apply(lambda x: (today - x).days)
 df["Days Until Decision"] = df["Decision By"].apply(lambda x: (x - today).days if x else None)
 
