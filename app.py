@@ -16,14 +16,11 @@ st.write(df.head())
 # ---------- DATE CALCULATIONS ----------
 today = date.today()
 
-def parse(d):
-    return datetime.strptime(d, "%Y-%m-%d").date() if d else None
-
-df["Applied On"] = df["Applied On"].apply(parse)
-df["Decision By"] = df["Decision By"].apply(parse)
+df["Applied On"] = pd.to_datetime(df["Applied On"], errors="coerce").dt.date
+df["Decision By"] = pd.to_datetime(df["Decision By"], errors="coerce").dt.date
 df["Days Since Applied"] = df["Applied On"].apply(lambda x: (today - x).days)
 df["Days Until Decision"] = df["Decision By"].apply(lambda x: (x - today).days if x else None)
-df["Admit Received On"] = df["Admit Received On"].apply(parse)
+df["Admit Received On"] = pd.to_datetime(df["Admit Received On"], errors="coerce").dt.date
 
 
 # ---------- STATUS LOGIC ----------
