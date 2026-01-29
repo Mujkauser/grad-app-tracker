@@ -6,18 +6,18 @@ st.set_page_config(page_title="Grad App Tracker", layout="wide")
 
 # ---------- DATA ----------
 data = [
-    ["NYU Tandon", "MS Management of Technology", "2025-12-01", "Admit", "No Interview", None, "2026-03-01"],
-    ["Northeastern", "MS in Engineering Management", "2025-12-01", "Admit", "No Interview", None, "2026-03-15"],
-    ["Duke", "Master of Engineering Management", "2025-12-08", "Awaiting Decision", "No Interview", "2026-01-30", "2026-03-15"],
-    ["Dartmouth", "MEM", "2025-12-14", "Under Review", "Awaiting Interview invite", "2026-03-15", "2026-04-15"],
-    ["Georgia Tech (MS)", "MS Management", "2025-12-15", "Under Review", "No Interview", "2026-02-24", "2026-03-19"],
-    ["Georgia Tech (MBA)", "MBA", "2026-01-10", "Under Review", "Awaiting Interview invite", "2026-02-27", "2026-03-19"],
-    ["Northwestern", "Master of Engineering Management", "2025-12-15", "Awaiting Decision", "interview Done", "2026-02-15", "2026-03-30"],
-    ["Purdue", "MS in Engineering Management", "2025-12-24", "Under Review", "interview Done", "2026-02-15", "2026-03-15"],
-    ["Johns Hopkins", "MEM", "2025-12-24", "Under Review", "Awaiting Interview invite", "2026-03-15", "2026-03-30"],
-    ["Columbia", "MS Management Science & Engineering", "2025-12-26", "Under Review", "Awaiting Interview invite", "2026-02-15", "2026-03-30"],
-    ["Cornell", "MEng Engineering Management", "2025-12-28", "Under Review", "Awaiting Interview invite", "2026-03-15", "2026-04-30"],
-    ["Tufts", "MS in Engineering Management", "2025-12-28", "Under Review", "No Interview", "2026-01-30", "2026-03-01"]
+    ["NYU Tandon", "MS Management of Technology", "2025-12-01", "Admit", "No Interview", None],
+    ["Northeastern", "MS in Engineering Management", "2025-12-01", "Admit", "No Interview", None],
+    ["Duke", "Master of Engineering Management", "2025-12-08", "Awaiting Decision", "No Interview", "2026-01-30"],
+    ["Dartmouth", "MEM", "2025-12-14", "Under Review", "Awaiting Interview invite", "2026-03-15"],
+    ["Georgia Tech (MS)", "MS Management", "2025-12-15", "Under Review", "No Interview", "2026-02-24"],
+    ["Georgia Tech (MBA)", "MBA", "2026-01-10", "Under Review", "Awaiting Interview invite", "2026-02-27"],
+    ["Northwestern", "Master of Engineering Management", "2025-12-15", "Awaiting Decision", "interview Done", "2026-02-15"],
+    ["Purdue", "MS in Engineering Management", "2025-12-24", "Under Review", "interview Done", "2026-02-15"],
+    ["Johns Hopkins", "MEM", "2025-12-24", "Under Review", "Awaiting Interview invite", "2026-03-15"],
+    ["Columbia", "MS Management Science & Engineering", "2025-12-26", "Under Review", "Awaiting Interview invite", "2026-02-15"],
+    ["Cornell", "MEng Engineering Management", "2025-12-28", "Under Review", "Awaiting Interview invite", "2026-03-15"],
+    ["Tufts", "MS in Engineering Management", "2025-12-28", "Under Review", "No Interview", "2026-01-30"]
 ]
 
 columns = [
