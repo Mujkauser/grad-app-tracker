@@ -4,33 +4,13 @@ from datetime import date, datetime
 
 st.set_page_config(page_title="Grad App Tracker", layout="wide")
 
-# ---------- DATA ----------
-data = [
-    ["NYU Tandon", "MS Management of Technology", "2025-12-01", "Admit", "No Interview", "2025-12-30", "2025-12-20"],
-    ["Northeastern", "MS in Engineering Management", "2025-12-01", "Admit", "No Interview", "2025-12-30", "2025-12-19"],
-    ["Duke", "Master of Engineering Management", "2025-12-08", "Awaiting Decision", "No Interview", "2026-01-30", None],
-    ["Dartmouth", "MEM", "2025-12-14", "Under Review", "Awaiting Interview invite", "2026-03-15", None],
-    ["Georgia Tech (MS)", "MS Management", "2025-12-15", "Under Review", "No Interview", "2026-02-24", None],
-    ["Georgia Tech (MBA)", "MBA", "2026-01-10", "Under Review", "Awaiting Interview invite", "2026-02-27", None],
-    ["Northwestern", "Master of Engineering Management", "2025-12-15", "Awaiting Decision", "interview Done", "2026-02-15", None],
-    ["Purdue", "MS in Engineering Management", "2025-12-24", "Under Review", "interview Done", "2026-02-15", None],
-    ["Johns Hopkins", "MEM", "2025-12-24", "Under Review", "Awaiting Interview invite", "2026-03-15", None],
-    ["Columbia", "MS Management Science & Engineering", "2025-12-26", "Under Review", "Awaiting Interview invite", "2026-02-15", None],
-    ["Cornell", "MEng Engineering Management", "2025-12-28", "Under Review", "Awaiting Interview invite", "2026-03-15", None],
-    ["Tufts", "MS in Engineering Management", "2025-12-28", "Under Review", "No Interview", "2026-01-30", None]
-]
+# ---------- DATA (FROM GOOGLE SHEETS) ----------
+SHEET_ID = "1hYhyNIJhxZ4Em4Yi-cBq5UxOMGVr8G5p_-n1ceto0Q0"
+SHEET_NAME = "Sheet1"   # change if your tab name is different
 
-columns = [
-    "University",
-    "Program",
-    "Applied On",
-    "Status",
-    "Interview",
-    "Decision By",
-    "Admit Received On"
-]
+csv_url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/tq?tqx=out:csv&sheet={SHEET_NAME}"
 
-df = pd.DataFrame(data, columns=columns)
+df = pd.read_csv(csv_url)
 
 # ---------- DATE CALCULATIONS ----------
 today = date.today()
