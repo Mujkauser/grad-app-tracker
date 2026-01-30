@@ -91,7 +91,7 @@ with col2:
 
 with col3:
     attention = df[df["Health"].str.contains("Decision")].shape[0]
-    st.metric("👀 Decisions In Progress", attention)
+    st.metric("👀 Actively Unfolding", attention)
 
 #st.divider()
 
