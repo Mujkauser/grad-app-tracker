@@ -14,7 +14,7 @@ df = pd.read_csv(csv_url)
 
 # ---------- DATE CALCULATIONS ----------
 # st.caption(f"🔄 Last refreshed at {datetime.now().strftime('%H:%M:%S')}")
-today_msg = "🌿 Today’s intention: Do your part, then rest your heart."
+today_msg = "🌿 Journey built on Tawakkul: Do your part, then trust Allah with the rest."
 st.info(today_msg)
 today = date.today()
 
@@ -96,7 +96,6 @@ with col3:
 #st.divider()
 
 st.markdown("### 📜 Where Things Stand (Today)")
-st.caption("Journey built on Tawakkul, Updated gently as Allah opens a door.")
 st.dataframe(
     df.sort_values(by=["Health", "Days Until Decision"], na_position="last"),
     use_container_width=True
