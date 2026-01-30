@@ -20,6 +20,9 @@ df["Decision By"] = pd.to_datetime(df["Decision By"], errors="coerce").dt.date
 df["Days Since Applied"] = df["Applied On"].apply(
     lambda x: (today - x).days if pd.notna(x) else None
 )
+df["Days Until Decision"] = df["Decision By"].apply(
+    lambda x: (x - today).days if pd.notna(x) else None
+)
 df["Admit Received On"] = pd.to_datetime(df["Admit Received On"], errors="coerce").dt.date
 
 
