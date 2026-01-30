@@ -122,8 +122,7 @@ else:
 
 st.divider()
 st.markdown("""
-> **“What is written for you will reach you,  
-even if it is beneath two mountains.”**
+> **“What is written for you will reach you,  even if it is beneath two mountains.”**
 
 Nothing here is late.  
 Nothing here is missed.  
