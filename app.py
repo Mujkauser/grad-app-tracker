@@ -29,11 +29,17 @@ def health(row):
     if row["Status"] == "Admit":
         return "🏆 Admit Secured"
 
+    if (
+        row["Interview"] == "Interview Done"
+        and row["Status"] != "Admit"
+    ):
+        return "🟡 Decision In Progress"
+
     if row["Days Until Decision"] is not None and row["Days Until Decision"] <= 0:
         return "🟡 Decision Window Open"
 
     return "🟢 Safe"
-
+    
 df["Health"] = df.apply(health, axis=1)
 
 df["Decision Turnaround (Days)"] = df.apply(
