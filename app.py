@@ -73,18 +73,39 @@ df = df.reindex(columns=ordered_columns)
 st.title("🎓 Graduate Application Tracker")
 st.caption("Anxiety-managed. Engineer-approved.")
 
+st.divider()
+st.subheader("🧭 My Admission Journey")
+
+if (df["Status"] == "Admit").any():
+    st.success("🎉 **Selection Phase** — You have admits. This is about choosing, not chasing.")
+elif (df["Interview"] == "Interview Done").any():
+    st.info("🎤 **Decision Waiting Phase** — Interviews done. Now committees are deliberating.")
+else:
+    st.info("📨 **Application Review Phase** — Files are under evaluation. Silence is normal.")
+
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.metric("✅ Total Admits", df[df["Status"] == "Admit"].shape[0])
+    st.metric(
+        "🏆 Admits in Hand",
+        df[df["Status"] == "Admit"].shape[0]
+    )
 
 with col2:
-    st.metric("⏳ Awaiting Decisions", df[df["Status"] != "Admit"].shape[0])
+    st.metric(
+        "🎤 Post-Interview Waiting",
+        df[(df["Interview"] == "Interview Done") & (df["Status"] != "Admit")].shape[0]
+    )
 
 with col3:
-    attention = df[df["Health"] == "🟡 Decision Window Open"].shape[0]
-    st.metric("👀 Decisions In Progress", attention)
-
+    st.metric(
+        "📬 Decisions Expected Soon",
+        df[
+            (df["Days Until Decision"].notna()) &
+            (df["Days Until Decision"] <= 14) &
+            (df["Days Until Decision"] >= 0)
+        ].shape[0]
+    )
 
 st.divider()
 
