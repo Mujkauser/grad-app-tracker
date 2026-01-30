@@ -61,8 +61,7 @@ ordered_columns = [
     "Health"
 ]
 
-st.write("Columns from Google Sheet:", list(df.columns))
-df = df[ordered_columns]
+df = df.reindex(columns=ordered_columns)
 
 # ---------- UI ----------
 st.title("🎓 Graduate Application Tracker")
