@@ -73,7 +73,7 @@ df = df.reindex(columns=ordered_columns)
 
 # ---------- UI ----------
 st.title("🎓 Graduate Application Tracker")
-st.caption("Anxiety-managed. Engineer-approved.")
+st.caption("Journey Built on Tawakkul.")
 
 st.divider()
 
