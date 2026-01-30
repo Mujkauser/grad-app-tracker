@@ -14,6 +14,8 @@ df = pd.read_csv(csv_url)
 
 # ---------- DATE CALCULATIONS ----------
 st.caption(f"🔄 Last refreshed at {datetime.now().strftime('%H:%M:%S')}")
+today_msg = "🌿 Today’s intention: Do your part, then rest your heart."
+st.info(today_msg)
 today = date.today()
 
 df["Applied On"] = pd.to_datetime(df["Applied On"], errors="coerce").dt.date
@@ -127,14 +129,10 @@ st.markdown("""
 
 Nothing here is late.  
 Nothing here is missed.  
-What’s meant for you — in marriage, knowledge, and work — is on its way.
+What’s meant for you in marriage, knowledge, and work is on its way.
 """)
 
 from datetime import datetime
-
-today_msg = "🌿 Today’s intention: Do your part, then rest your heart."
-
-st.info(today_msg)
 
 st.caption("This dashboard updates daily. You don’t need to.")
 
