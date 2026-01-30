@@ -38,7 +38,11 @@ df["Health"] = df.apply(health, axis=1)
 
 df["Decision Turnaround (Days)"] = df.apply(
     lambda row: (row["Admit Received On"] - row["Applied On"]).days
-    if row["Status"] == "Admit" and row["Admit Received On"] is not None
+    if (
+        row["Status"] == "Admit"
+        and pd.notna(row["Admit Received On"])
+        and pd.notna(row["Applied On"])
+    )
     else None,
     axis=1
 )
