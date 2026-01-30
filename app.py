@@ -76,7 +76,6 @@ df = df.reindex(columns=ordered_columns)
 
 # ---------- UI ----------
 st.title("🎓 Graduate Application Tracker")
-st.caption("Journey built on Tawakkul.")
 
 st.divider()
 
@@ -97,7 +96,7 @@ with col3:
 st.divider()
 
 st.markdown("### 📜 Where Things Stand (Today)")
-st.caption("Updated gently as Allah opens a door.")
+st.caption("Journey built on Tawakkul, Updated gently as Allah opens a door.")
 st.dataframe(
     df.sort_values(by=["Health", "Days Until Decision"], na_position="last"),
     use_container_width=True
