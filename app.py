@@ -13,7 +13,7 @@ csv_url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/tq?tqx=out:cs
 df = pd.read_csv(csv_url)
 
 # ---------- DATE CALCULATIONS ----------
-st.caption(f"🔄 Last refreshed at {datetime.now().strftime('%H:%M:%S')}")
+# st.caption(f"🔄 Last refreshed at {datetime.now().strftime('%H:%M:%S')}")
 today_msg = "🌿 Today’s intention: Do your part, then rest your heart."
 st.info(today_msg)
 today = date.today()
