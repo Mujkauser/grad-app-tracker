@@ -13,6 +13,7 @@ csv_url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/tq?tqx=out:cs
 df = pd.read_csv(csv_url)
 
 # ---------- DATE CALCULATIONS ----------
+st.caption(f"🔄 Last refreshed at {datetime.now().strftime('%H:%M:%S')}")
 today = date.today()
 
 df["Applied On"] = pd.to_datetime(df["Applied On"], errors="coerce").dt.date
