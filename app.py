@@ -83,30 +83,14 @@ elif (df["Interview"] == "Interview Done").any():
 else:
     st.info("📨 **Application Review Phase** — Files are under evaluation. Silence is normal.")
 
-col1, col2, col3 = st.columns(3)
+#---------metrics-------------
 
-with col1:
-    st.metric(
-        "🏆 Admits in Hand",
-        df[df["Status"] == "Admit"].shape[0]
-    )
+col1, col2, col3 = st.columns(3) 
 
-with col2:
-    st.metric(
-        "🎤 Post-Interview Waiting",
-        df[(df["Interview"] == "Interview Done") & (df["Status"] != "Admit")].shape[0]
-    )
-
-with col3:
-    st.metric(
-        "📬 Decisions Expected Soon",
-        df[
-            (df["Days Until Decision"].notna()) &
-            (df["Days Until Decision"] <= 14) &
-            (df["Days Until Decision"] >= 0)
-        ].shape[0]
-    )
-
+with col1: st.metric("✅ Total Admits", df[df["Status"] == "Admit"].shape[0]) 
+with col2: st.metric("⏳ Awaiting Decisions", df[df["Status"] != "Admit"].shape[0]) 
+with col3: attention = df[df["Health"] == "🟡 Decision Window Open"].shape[0] 
+st.metric("👀 Decisions In Progress", attention) 
 st.divider()
 
 st.subheader("Dashboard")
