@@ -77,7 +77,7 @@ df = df.reindex(columns=ordered_columns)
 # ---------- UI ----------
 st.title("🎓 Graduate Application Tracker")
 
-st.divider()
+#st.divider()
 
 # --------- metrics -------------
 
@@ -93,7 +93,7 @@ with col3:
     attention = df[df["Health"].str.contains("Decision")].shape[0]
     st.metric("🕊️ Actively Unfolding", attention)
 
-st.divider()
+#st.divider()
 
 st.markdown("### 📜 Where Things Stand (Today)")
 st.caption("Journey built on Tawakkul, Updated gently as Allah opens a door.")
