@@ -84,14 +84,14 @@ st.title("🎓 Graduate Application Tracker")
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.metric("🤍 What’s Already Written", df[df["Status"] == "Admit"].shape[0])
+    st.metric("✅ Total Admits ", df[df["Status"] == "Admit"].shape[0])
 
 with col2:
-    st.metric("⏳ Still in Allah’s Hands", df[df["Status"] != "Admit"].shape[0])
+    st.metric("⏳ Awaiting Decisions", df[df["Status"] != "Admit"].shape[0])
 
 with col3:
     attention = df[df["Health"].str.contains("Decision")].shape[0]
-    st.metric("🕊️ Actively Unfolding", attention)
+    st.metric("👀 Decisions In Progress", attention)
 
 #st.divider()
 
