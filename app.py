@@ -75,17 +75,21 @@ st.caption("Anxiety-managed. Engineer-approved.")
 
 st.divider()
 
-#---------metrics-------------
+# --------- metrics -------------
+col1, col2, col3 = st.columns(3)
 
-col1, col2, col3 = st.columns(3) 
+with col1:
+    st.metric("✅ Total Admits", df[df["Status"] == "Admit"].shape[0])
 
-with col1: st.metric("✅ Total Admits", df[df["Status"] == "Admit"].shape[0]) 
-with col2: st.metric("⏳ Awaiting Decisions", df[df["Status"] != "Admit"].shape[0]) 
-with col3: attention = df[df["Health"] == "🟡 Decision Window Open"].shape[0] 
-    
-st.metric("👀 Decisions In Progress", attention) 
+with col2:
+    st.metric("⏳ Awaiting Decisions", df[df["Status"] != "Admit"].shape[0])
+
+with col3:
+    attention = df[df["Health"].str.contains("Decision")].shape[0]
+    st.metric("👀 Decisions In Progress", attention)
 
 st.divider()
+
 
 st.subheader("Dashboard")
 st.dataframe(
