@@ -20,7 +20,6 @@ df["Decision By"] = pd.to_datetime(df["Decision By"], errors="coerce").dt.date
 df["Days Since Applied"] = df["Applied On"].apply(
     lambda x: (today - x).days if pd.notna(x) else None
 )
-df["Days Until Decision"] = df["Decision By"].apply(lambda x: (x - today).days if x else None)
 df["Admit Received On"] = pd.to_datetime(df["Admit Received On"], errors="coerce").dt.date
 
 
@@ -76,20 +75,23 @@ st.caption("Anxiety-managed. Engineer-approved.")
 st.divider()
 
 # --------- metrics -------------
+
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    st.metric("✅ Total Admits", df[df["Status"] == "Admit"].shape[0])
+    st.metric("🤍 What’s Already Written", df[df["Status"] == "Admit"].shape[0])
 
 with col2:
-    st.metric("⏳ Awaiting Decisions", df[df["Status"] != "Admit"].shape[0])
+    st.metric("⏳ Still in Allah’s Hands", df[df["Status"] != "Admit"].shape[0])
 
 with col3:
     attention = df[df["Health"].str.contains("Decision")].shape[0]
-    st.metric("👀 Decisions In Progress", attention)
+    st.metric("🕊️ Actively Unfolding", attention)
 
 st.divider()
 
+st.markdown("### 📜 Where Things Stand (Today)")
+st.caption("Updated gently. No urgency unless Allah opens a door.")
 
 st.subheader("Dashboard")
 st.dataframe(
@@ -99,7 +101,6 @@ st.dataframe(
 
 st.divider()
 
-st.divider()
 st.subheader("📈 Decision Speed Insights")
 
 avg_turnaround = df["Decision Turnaround (Days)"].dropna().mean()
@@ -117,6 +118,22 @@ if overdue.empty:
     st.success("✅ No universities are overdue. Everything is on track. Breathe.")
 else:
     st.warning("⚠️ Some decisions are past the expected date (still normal, but noted).")
+
+st.divider()
+st.markdown("""
+> **“What is written for you will reach you,  
+even if it is beneath two mountains.”**
+
+Nothing here is late.  
+Nothing here is missed.  
+What’s meant for you — in marriage, knowledge, and work — is on its way.
+""")
+
+from datetime import datetime
+
+today_msg = "🌿 Today’s intention: Do your part, then rest your heart."
+
+st.info(today_msg)
 
 st.caption("This dashboard updates daily. You don’t need to.")
 
