@@ -68,7 +68,7 @@ ordered_columns = [
     #"Admit Received On",
     #"Decision Turnaround (Days)",
     #"Days Since Applied",
-    #"Days Until Decision",
+    "Days Until Decision",
     "Health"
 ]
 
