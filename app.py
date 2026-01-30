@@ -11,7 +11,6 @@ SHEET_NAME = "Sheet1"   # change if your tab name is different
 csv_url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/tq?tqx=out:csv&sheet={SHEET_NAME}"
 
 df = pd.read_csv(csv_url)
-st.write(df.head())
 
 # ---------- DATE CALCULATIONS ----------
 today = date.today()
