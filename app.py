@@ -21,7 +21,7 @@ today = date.today()
 df["Applied On"] = pd.to_datetime(df["Applied On"], errors="coerce").dt.date
 df["Decision By"] = pd.to_datetime(df["Decision By"], errors="coerce").dt.date
 df["Admit Received On"] = pd.to_datetime(df["Admit Received On"], errors="coerce").dt.date
-
+df["Enrollment Deadline"] = pd.to_datetime(df["Enrollment Deadline"], errors="coerce").dt.date
 
 # ---------- STATUS LOGIC ----------
 def health(row):
@@ -38,11 +38,13 @@ df["Health"] = df.apply(health, axis=1)
 ordered_columns = [
     "University",
     "Program",
+    "Campus",
     "Applied On",
-    "Interview",
     "Status",
+    "Interview",
     "Decision By",
     "Admit Received On",
+    "Enrollment Deadline",
     "Health"
 ]
 
