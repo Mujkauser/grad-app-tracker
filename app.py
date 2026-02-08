@@ -71,7 +71,7 @@ with col3:
 
 st.markdown("### 📜 Where Things Stand (Today)")
 st.dataframe(
-    df.sort_values(by=["Health", "University"])
+    df.sort_values(by=["Health", "University"]),
     use_container_width=True
 )
 
