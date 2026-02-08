@@ -25,11 +25,23 @@ df["Enrollment Deadline"] = pd.to_datetime(df["Enrollment Deadline"], errors="co
 
 # ---------- STATUS LOGIC ----------
 def health(row):
-    if row["Status"] == "Admit":
+    status = str(row["Status"]).strip().lower()
+    interview = str(row["Interview"]).strip().lower()
+
+    if status == "admit":
         return "🏆 Admit Secured"
 
-    if row["Interview"] == "Interview Done":
+    # Actively being evaluated
+    if status == "awaiting decision":
         return "🟡 Decision In Progress"
+
+    # Interview done but decision not yet marked
+    if "interview" in interview and "awaiting" not in interview:
+        return "🟡 Decision In Progress"
+
+    # Still waiting for interview or early review
+    if "awaiting interview" in interview or status == "under review":
+        return "🟢 In Review"
 
     return "🟢 In Review"
     
