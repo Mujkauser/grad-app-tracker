@@ -71,27 +71,25 @@ with col3:
 
 st.markdown("### 📜 Where Things Stand (Today)")
 st.dataframe(
+    df.sort_values(by=["Health", "University"])
     use_container_width=True
 )
 
 st.divider()
 
-st.subheader("🌱 Current Phase Snapshot")
-
-phase_counts = df["Health"].value_counts()
-
-for phase, count in phase_counts.items():
-    st.write(f"**{phase}** — {count}")
-
 # ---------- REALITY CHECK ----------
 st.subheader("🧠 Reality Check")
 
-overdue = df[(df["Days Until Decision"].notna()) & (df["Days Until Decision"] < 0)]
+overdue = df[
+    (df["Decision By"].notna()) &
+    (df["Decision By"] < today) &
+    (df["Status"] != "Admit")
+]
 
 if overdue.empty:
-    st.success("✅ No universities are overdue. Everything is on track. Breathe.")
+    st.success("✅ Nothing appears delayed. Everything is unfolding as it should.")
 else:
-    st.warning("⚠️ Some decisions are past the expected date (still normal, but noted).")
+    st.info("Some decisions are taking longer than expected — this is common and not a concern.")
 
 st.divider()
 st.markdown("""
