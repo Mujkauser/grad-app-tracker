@@ -28,18 +28,23 @@ def health(row):
     status = str(row["Status"]).strip().lower()
     interview = str(row["Interview"]).strip().lower()
 
+    # 1. Final outcome
     if status == "admit":
         return "🏆 Admit Secured"
 
-    # Actively being evaluated
+    # 2. Explicit awaiting decision
     if status == "awaiting decision":
         return "🟡 Decision In Progress"
 
-    # Interview done but decision not yet marked
-    if "interview" in interview and "awaiting" not in interview:
+    # 3. Any interview already happened or scheduled
+    if (
+        "interview" in interview
+        and "awaiting" not in interview
+        and "no interview" not in interview
+    ):
         return "🟡 Decision In Progress"
 
-    # Still waiting for interview or early review
+    # 4. Still early / waiting
     if "awaiting interview" in interview or status == "under review":
         return "🟢 In Review"
 
