@@ -20,12 +20,6 @@ today = date.today()
 
 df["Applied On"] = pd.to_datetime(df["Applied On"], errors="coerce").dt.date
 df["Decision By"] = pd.to_datetime(df["Decision By"], errors="coerce").dt.date
-df["Days Since Applied"] = df["Applied On"].apply(
-    lambda x: (today - x).days if pd.notna(x) else None
-)
-df["Days Until Decision"] = df["Decision By"].apply(
-    lambda x: (x - today).days if pd.notna(x) else None
-)
 df["Admit Received On"] = pd.to_datetime(df["Admit Received On"], errors="coerce").dt.date
 
 
@@ -34,29 +28,12 @@ def health(row):
     if row["Status"] == "Admit":
         return "🏆 Admit Secured"
 
-    if (
-        row["Interview"] == "Interview Done"
-        and row["Status"] != "Admit"
-    ):
+    if row["Interview"] == "Interview Done":
         return "🟡 Decision In Progress"
 
-    if row["Days Until Decision"] is not None and row["Days Until Decision"] <= 0:
-        return "🟡 Decision Window Open"
-
-    return "🟢 Safe"
+    return "🟢 In Review"
     
 df["Health"] = df.apply(health, axis=1)
-
-df["Decision Turnaround (Days)"] = df.apply(
-    lambda row: (row["Admit Received On"] - row["Applied On"]).days
-    if (
-        row["Status"] == "Admit"
-        and pd.notna(row["Admit Received On"])
-        and pd.notna(row["Applied On"])
-    )
-    else None,
-    axis=1
-)
 
 ordered_columns = [
     "University",
@@ -66,9 +43,6 @@ ordered_columns = [
     "Status",
     "Decision By",
     "Admit Received On",
-    "Decision Turnaround (Days)",
-    "Days Since Applied",
-    "Days Until Decision",
     "Health"
 ]
 
@@ -103,13 +77,12 @@ st.dataframe(
 
 st.divider()
 
-st.subheader("📈 Decision Speed Insights")
+st.subheader("🌱 Current Phase Snapshot")
 
-avg_turnaround = df["Decision Turnaround (Days)"].dropna().mean()
+phase_counts = df["Health"].value_counts()
 
-if not pd.isna(avg_turnaround):
-    st.info(f"⏱️ Average admit turnaround so far: **{int(avg_turnaround)} days**")
-
+for phase, count in phase_counts.items():
+    st.write(f"**{phase}** — {count}")
 
 # ---------- REALITY CHECK ----------
 st.subheader("🧠 Reality Check")
