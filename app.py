@@ -48,7 +48,7 @@ def health(row):
     if "awaiting interview" in interview or status == "under review":
         return "🟢 In Review"
 
-    if status == "Reject":
+    if status in ["reject", "rejected"]:
         return "😅 Rejected, Alhamdulillah"
 
     return "🟢 In Review"
