@@ -48,6 +48,9 @@ def health(row):
     if "awaiting interview" in interview or status == "under review":
         return "🟢 In Review"
 
+    if status == "Reject":
+        return "😅 Rejected, Alhamdulillah"
+
     return "🟢 In Review"
     
 df["Health"] = df.apply(health, axis=1)
