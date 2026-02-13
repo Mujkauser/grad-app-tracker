@@ -89,7 +89,7 @@ with col2:
     )
     
 with col3:
-    st.metric("😅 Reject", df[df["Health"].str.contains("Reject")].shape[0])
+    st.metric("😅 Total Rejects", df[df["Health"].str.contains("Reject")].shape[0])
 
 with col4:
     attention = df[df["Health"].str.contains("Decision")].shape[0]
