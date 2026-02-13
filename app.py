@@ -77,15 +77,18 @@ st.title("🎓 Graduate Application Tracker")
 
 # --------- metrics -------------
 
-col1, col2, col3 = st.columns(3)
+col1, col2, col3, col4 = st.columns(3)
 
 with col1:
     st.metric("✅ Total Admits ", df[df["Status"] == "Admit"].shape[0])
 
 with col2:
     st.metric("⏳ Awaiting Decisions", df[df["Status"] != "Admit"].shape[0])
-
+    
 with col3:
+    st.metric("😅 Reject", df[df["Status"] != "Admit"].shape[0])
+
+with col4:
     attention = df[df["Health"].str.contains("Decision")].shape[0]
     st.metric("👀 Actively Unfolding", attention)
 
