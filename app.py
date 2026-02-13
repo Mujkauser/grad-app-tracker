@@ -83,7 +83,10 @@ with col1:
     st.metric("✅ Total Admits ", df[df["Status"] == "Admit"].shape[0])
 
 with col2:
-    st.metric("⏳ Awaiting Decisions", df[df["Status"] != "Admit"|| "Reject"].shape[0])
+    st.metric(
+        "⏳ Awaiting Decisions",
+        df[~df["Status"].isin(["Admit", "Reject", "Rejected"])].shape[0]
+    )
     
 with col3:
     st.metric("😅 Reject", df[df["Health"].str.contains("Reject")].shape[0])
