@@ -21,6 +21,8 @@ today = date.today()
 # ---------- PERSONAL MILESTONE ----------
 clarity_date = date(2026, 3, 31)
 days_to_clarity = (clarity_date - today).days
+clarity_start = date(2026, 3, 10)   # last 10 days begin
+clarity_end = date(2026, 3, 30)     # Ramadan end / closure
 
 df["Applied On"] = pd.to_datetime(df["Applied On"], errors="coerce").dt.date
 df["Decision By"] = pd.to_datetime(df["Decision By"], errors="coerce").dt.date
