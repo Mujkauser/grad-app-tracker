@@ -135,27 +135,43 @@ with col4:
 
 st.markdown("### 🎉 Celebrate an Admit")
 
-admitted_unis = df[df["Health"] == "🏆 Admit Secured"]["University"].tolist()
+admit_df = df[df["Health"] == "🏆 Admit Secured"]
 
-if admitted_unis:
+if not admit_df.empty:
     selected_uni = st.selectbox(
-        "Select an admitted university to celebrate ✨",
-        ["— Select —"] + admitted_unis
+        "Select an admitted university",
+        ["— Select —"] + admit_df["University"].tolist()
     )
 
     if selected_uni != "— Select —":
-        st.success(f"🎓 **Admit secured at {selected_uni}!** Alhamdulillah 🤍")
-        st.balloons()
+        row = admit_df[admit_df["University"] == selected_uni].iloc[0]
+
+        admit_date = (
+            row["Admit Received On"].strftime("%d %b %Y")
+            if pd.notna(row["Admit Received On"])
+            else "—"
+        )
+        campus = row["Campus"] if pd.notna(row["Campus"]) else "—"
+
+        st.success(
+            f"""
+🌙 **Alhamdulillah. A door has opened.**
+
+🎓 **University:** {selected_uni}  
+📍 **Campus:** {campus}  
+📅 **Admit received:** {admit_date}
+
+Take a moment.  
+Say *Alhamdulillah*.  
+What Allah gives comes with barakah.
+"""
+        )
+        
+        # Soft Ramadan-style confetti
+        st.snow()
+
 else:
-    st.caption("No admits to celebrate yet, what’s written will come 🌱")
-
-st.divider()
-
-st.markdown("### 📜 Where Things Stand (Today)")
-st.dataframe(
-    df.sort_values(by=["Health", "University"]),
-    use_container_width=True
-)
+    st.caption("🌱 No admits yet, what is written will arrive in its time.")
 
 st.divider()
 
