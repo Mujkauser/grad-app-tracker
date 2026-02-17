@@ -20,9 +20,9 @@ today = date.today()
 
 # ---------- PERSONAL MILESTONE ----------
 clarity_date = date(2026, 3, 31)
-days_to_clarity = (clarity_date - today).days
 clarity_start = date(2026, 3, 10)   # last 10 days begin
 clarity_end = date(2026, 3, 30)     # Ramadan end / closure
+days_until_march_31 = (clarity_date - today).days
 
 df["Applied On"] = pd.to_datetime(df["Applied On"], errors="coerce").dt.date
 df["Decision By"] = pd.to_datetime(df["Decision By"], errors="coerce").dt.date
@@ -82,6 +82,11 @@ st.title("🎓 Graduate Application Tracker")
 #st.divider()
 
 st.markdown("### 🌙 A Moment of Tawakkul")
+
+if days_until_march_31 >= 0:
+    st.caption(
+        f"⏳ **{days_until_march_31} days** until March 31, 2026 — placed gently in Allah’s hands."
+    )
 
 if today < clarity_start:
     days_to_clarity = (clarity_start - today).days
