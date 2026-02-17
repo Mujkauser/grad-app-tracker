@@ -81,21 +81,27 @@ st.title("🎓 Graduate Application Tracker")
 
 st.markdown("### 🌙 A Moment of Tawakkul")
 
-if days_to_clarity > 0:
+if today < clarity_start:
+    days_to_clarity = (clarity_start - today).days
     st.info(
-        f"🕊️ **{days_to_clarity} days** remain until the chapter after Ramadan.\n\n"
-        "Until then, do what you must — and leave the rest to Allah."
+        f"🕊️ **{days_to_clarity} days** until the final days of Ramadan.\n\n"
+        "Until then, take the means — and let Allah arrange the outcome."
     )
-elif days_to_clarity == 0:
+
+elif clarity_start <= today <= clarity_end:
+    days_left = (clarity_end - today).days
     st.warning(
-        "🌙 **Today is the day of clarity.**\n\n"
-        "Whatever unfolds next is written with mercy."
+        f"🌙 **Days of Clarity**\n\n"
+        f"The last days of Ramadan are unfolding.\n"
+        f"**{days_left} days** remain to make duʿā, seek signs, and surrender fully."
     )
+
 else:
     st.success(
-        "🌱 **This chapter has closed gently.**\n\n"
-        "What didn’t arrive was never meant to burden you.\n"
-        "What *will* arrive will come with peace."
+        "🌱 **This matter has been released to Allah.**\n\n"
+        "What was meant to reach you has reached.\n"
+        "What didn’t was never meant to weigh you down.\n\n"
+        "**Sabr now. Trust always.**"
     )
 
 # --------- metrics -------------
