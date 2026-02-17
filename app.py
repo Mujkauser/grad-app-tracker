@@ -133,6 +133,24 @@ with col4:
 
 #st.divider()
 
+st.markdown("### 🎉 Celebrate an Admit")
+
+admitted_unis = df[df["Health"] == "🏆 Admit Secured"]["University"].tolist()
+
+if admitted_unis:
+    selected_uni = st.selectbox(
+        "Select an admitted university to celebrate ✨",
+        ["— Select —"] + admitted_unis
+    )
+
+    if selected_uni != "— Select —":
+        st.success(f"🎓 **Admit secured at {selected_uni}!** Alhamdulillah 🤍")
+        st.balloons()
+else:
+    st.caption("No admits to celebrate yet, what’s written will come 🌱")
+
+st.divider()
+
 st.markdown("### 📜 Where Things Stand (Today)")
 st.dataframe(
     df.sort_values(by=["Health", "University"]),
