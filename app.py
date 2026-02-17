@@ -175,6 +175,12 @@ else:
 
 st.divider()
 
+st.markdown("### 📜 Where Things Stand (Today)")
+st.dataframe(
+    df.sort_values(by=["Health", "University"]),
+    use_container_width=True
+)
+
 # ---------- REALITY CHECK ----------
 st.subheader("🧠 Reality Check")
 
