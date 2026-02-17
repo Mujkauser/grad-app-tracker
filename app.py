@@ -92,7 +92,7 @@ if today < clarity_start:
     days_to_clarity = (clarity_start - today).days
     st.info(
         f"🕊️ **{days_to_clarity} days** until the final days of Ramadan.\n\n"
-        "Until then, take the means — and let Allah arrange the outcome."
+        "Until then, take the means and let Allah arrange the outcome."
     )
 
 elif clarity_start <= today <= clarity_end:
