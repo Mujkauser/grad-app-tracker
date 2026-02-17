@@ -153,7 +153,7 @@ overdue = df[
 if overdue.empty:
     st.success("✅ Nothing appears delayed. Everything is unfolding as it should.")
 else:
-    st.info("Some decisions are taking longer than expected — this is common and not a concern.")
+    st.info("Some decisions are taking longer than expected, this is common and not a concern.")
 
 st.divider()
 st.markdown("""
