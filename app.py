@@ -85,7 +85,7 @@ st.markdown("### 🌙 A Moment of Tawakkul")
 
 if days_until_march_31 >= 0:
     st.caption(
-        f"⏳ **{days_until_march_31} days** until March 31, 2026 — placed gently in Allah’s hands."
+        f"⏳ **{days_until_march_31} days** until March 31, 2026."
     )
 
 if today < clarity_start:
