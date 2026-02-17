@@ -8,6 +8,10 @@ st.set_page_config(page_title="Grad App Tracker", layout="wide")
 SHEET_ID = "1hYhyNIJhxZ4Em4Yi-cBq5UxOMGVr8G5p_-n1ceto0Q0"
 SHEET_NAME = "Sheet1"   # change if your tab name is different
 
+# ---------- PERSONAL MILESTONE ----------
+clarity_date = date(2026, 3, 31)
+days_to_clarity = (clarity_date - today).days
+
 csv_url = f"https://docs.google.com/spreadsheets/d/{SHEET_ID}/gviz/tq?tqx=out:csv&sheet={SHEET_NAME}"
 
 df = pd.read_csv(csv_url)
@@ -74,6 +78,25 @@ df = df.reindex(columns=ordered_columns)
 st.title("🎓 Graduate Application Tracker")
 
 #st.divider()
+
+st.markdown("### 🌙 A Moment of Tawakkul")
+
+if days_to_clarity > 0:
+    st.info(
+        f"🕊️ **{days_to_clarity} days** remain until the chapter after Ramadan.\n\n"
+        "Until then, do what you must — and leave the rest to Allah."
+    )
+elif days_to_clarity == 0:
+    st.warning(
+        "🌙 **Today is the day of clarity.**\n\n"
+        "Whatever unfolds next is written with mercy."
+    )
+else:
+    st.success(
+        "🌱 **This chapter has closed gently.**\n\n"
+        "What didn’t arrive was never meant to burden you.\n"
+        "What *will* arrive will come with peace."
+    )
 
 # --------- metrics -------------
 
